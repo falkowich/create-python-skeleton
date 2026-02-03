@@ -20,17 +20,17 @@ Bash script for scaffolding modern Python CLI projects with sensible defaults.
 ## Installation
 ```bash
 # Download
-curl -O https://raw.githubusercontent.com/falkowich/create-python-skeleton/main/create-skeleton.sh
+curl -O https://raw.githubusercontent.com/falkowich/create-python-skeleton/main/create-skeleton
 
 # Make executable
-chmod +x create-skeleton.sh
+chmod +x create-skeleton
 
 # Move to PATH
-mv create-skeleton.sh ~/bin/create-skeleton
+mv create-skeleton ~/bin/create-skeleton
 
 # If ~/bin doesn't exist:
 mkdir -p ~/bin
-mv create-skeleton.sh ~/bin/create-skeleton
+mv create-skeleton ~/bin/create-skeleton
 
 # Add to PATH (add to ~/.bashrc or ~/.zshrc for persistence)
 export PATH="$HOME/bin:$PATH"
