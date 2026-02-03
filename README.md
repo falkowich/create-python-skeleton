@@ -17,9 +17,28 @@ Bash script for scaffolding modern Python CLI projects with sensible defaults.
 - uv (install via: curl -LsSf https://astral.sh/uv/install.sh | sh)
 - curl or wget (for fetching .gitignore)
 
+## Installation
+```bash
+# Download
+curl -O https://raw.githubusercontent.com/falkowich/create-python-skeleton/main/create-skeleton.sh
+
+# Make executable
+chmod +x create-skeleton.sh
+
+# Move to PATH
+mv create-skeleton.sh ~/bin/create-skeleton
+
+# If ~/bin doesn't exist:
+mkdir -p ~/bin
+mv create-skeleton.sh ~/bin/create-skeleton
+
+# Add to PATH (add to ~/.bashrc or ~/.zshrc for persistence)
+export PATH="$HOME/bin:$PATH"
+```
+
 ## Usage
 ```bash
-./create-skeleton.sh PROJECT_NAME [OPTIONS]
+create-skeleton PROJECT_NAME [OPTIONS]
 ```
 
 ### Options
@@ -30,16 +49,16 @@ Bash script for scaffolding modern Python CLI projects with sensible defaults.
 ### Examples
 ```bash
 # Basic CLI tool
-./create-skeleton.sh my-tool
+create-skeleton my-tool
 
 # API client/server
-./create-skeleton.sh my-api --api
+create-skeleton my-api --api
 
 # Database-backed service
-./create-skeleton.sh my-service --db
+create-skeleton my-service --db
 
 # Full-stack application
-./create-skeleton.sh my-app --api --db
+create-skeleton my-app --api --db
 ```
 
 ## What Gets Created
@@ -101,6 +120,7 @@ With `--db`:
 
 ### Why uv?
 
+- 10-100x faster than pip/poetry
 - Native Python 3.13 support
 - Simple dependency management
 - No complex lock files to maintain
@@ -108,6 +128,7 @@ With `--db`:
 ### Why Ruff?
 
 - Replaces black, isort, and flake8 in one tool
+- 10-100x faster than alternatives
 - Actively maintained
 - Good enough defaults
 
@@ -128,7 +149,14 @@ With `--db`:
 - CI/CD handles multi-version if needed
 - Reduces local complexity
 
-## Makefile Commands
+**No poetry**
+- uv is faster and simpler
+- Less TOML complexity
+- Better for Python 3.13+
+
+## Generated Project Commands
+
+After creating a project, these Makefile commands are available:
 ```bash
 make install   # Install dependencies with uv
 make format    # Format code with ruff
@@ -189,18 +217,6 @@ Benefits of src-layout:
 | Customization | Edit script | Templates | Limited |
 | Maintenance | Single file | Template repo | Tool updates |
 | Layout | src-layout | Configurable | flat-layout |
-
-## Installation
-```bash
-# Download
-curl -O https://raw.githubusercontent.com/falkowich/create-python-skeleton/main/create-skeleton.sh
-
-# Make executable
-chmod +x create-skeleton.sh
-
-# Optional: Move to PATH
-mv create-skeleton.sh ~/bin/create-skeleton
-```
 
 ## Requirements for Generated Projects
 
